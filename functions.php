@@ -278,10 +278,11 @@ function university_features() {
 }
 add_action('after_setup_theme','university_features');
 
-//-------------------------Start Link----------------------
 function kaddora_enqueue_scripts() {
     $theme_uri = get_template_directory_uri();    
-    wp_enqueue_script('jquery');    
+    
+    wp_enqueue_script('jquery');
+    
     wp_enqueue_script('popper', $theme_uri . '/assets/bootstrap4/popper.js', array('jquery'), null, true);
     wp_enqueue_script('bootstrap', $theme_uri . '/assets/bootstrap4/bootstrap.min.js', array('jquery', 'popper'), null, true);    
     wp_enqueue_script('isotope', $theme_uri . '/assets/js/isotope.pkgd.min.js', array('jquery'), null, true);
@@ -292,8 +293,10 @@ function kaddora_enqueue_scripts() {
     wp_enqueue_script('faq', $theme_uri . '/assets/js/faq.js', array('jquery'), null, true);
     wp_enqueue_script('kaddora-appointment-form', $theme_uri . '/assets/js/appointment-form.js', array('jquery'), null, true);
     wp_enqueue_script('custom', $theme_uri . '/assets/js/custom.js', array('jquery'), null, true);
+    wp_enqueue_script('swiper', 'https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js', array(), null, true);
 }
 add_action('wp_enqueue_scripts', 'kaddora_enqueue_scripts');
+
 function kaddora_enqueue_styles() {
     $theme_uri = get_template_directory_uri();
     
@@ -304,10 +307,13 @@ function kaddora_enqueue_styles() {
     wp_enqueue_style('animate', $theme_uri . '/assets/css/animate.css');
     wp_enqueue_style('kaddora-main-style', $theme_uri . '/assets/css/main_styles.css');
     wp_enqueue_style('kaddora-responsive', $theme_uri . '/assets/css/responsive.css');
+    
+    wp_enqueue_style('kaddora-google-fonts', 'https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&family=Open+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap', array(), null);
+    
+    wp_enqueue_style('swiper', 'https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css');
 }
 add_action('wp_enqueue_scripts', 'kaddora_enqueue_styles');
 
-//----------------------------End css and js link-------------------------------------------->
 function medilab_customize_register($wp_customize) {
 
     $wp_customize->add_section('medilab_hero_section', array(
@@ -1405,8 +1411,7 @@ function kaddora_contact_submissions_page() {
         .widefat td, .widefat th { vertical-align: middle; }
     </style>';
 }
-//----------------------End Contact Field-------------------->
-//--------------user Register------------------------>
+
 add_action('admin_post_nopriv_custom_user_register', 'handle_custom_user_register');
 add_action('admin_post_custom_user_register', 'handle_custom_user_register');
 function handle_custom_user_register() {
@@ -1439,8 +1444,7 @@ function handle_custom_user_register() {
         exit;
     }
 }
-// ------------------------End user register-------------->
-//----------------------Login page------------------------->
+
 
 add_action('admin_post_nopriv_custom_login_action', 'custom_handle_user_login');
 add_action('admin_post_custom_login_action', 'custom_handle_user_login');
@@ -1474,7 +1478,6 @@ function custom_handle_user_login() {
         }
     }
 }
-//------------------------End Login------------------------>
 
 
 add_action('after_setup_theme', 'initialize_woocommerce_image_sizes');
@@ -1503,5 +1506,3 @@ function initialize_woocommerce_image_sizes() {
         }
     }
 }
-
-//-------------------End Woocommerce Sect-------------------->
