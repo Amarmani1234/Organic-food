@@ -1,28 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Organic - Grocery Store HTML Website Template</title>
+    <title>Organic-Food-Theme</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="format-detection" content="telephone=no">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="author" content="">
-    <meta name="keywords" content="">
-    <meta name="description" content="">
-
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="css/vendor.css">
     <link rel="stylesheet" type="text/css" href="style.css">
-
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&family=Open+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
 
   </head>
   <body>
-
     <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
       <defs>
         <symbol xmlns="http://www.w3.org/2000/svg" id="facebook" viewBox="0 0 24 24"><path fill="currentColor" d="M15.12 5.32H17V2.14A26.11 26.11 0 0 0 14.26 2c-2.72 0-4.58 1.66-4.58 4.7v2.62H6.61v3.56h3.07V22h3.68v-9.12h3.06l.46-3.56h-3.52V7.05c0-1.05.28-1.73 1.76-1.73Z"/></symbol>
@@ -253,19 +245,15 @@
             </a>
           </li>
         </ul>
-      
       </div>
-
     </div>
-
-    <header>
+    <header style="margin-top:23px;">
       <div class="container-fluid">
-        <div class="row py-3 border-bottom">
-          
+        <div class="row py-3 border-bottom">          
           <div class="col-sm-4 col-lg-2 text-center text-sm-start d-flex gap-3 justify-content-center justify-content-md-start">
             <div class="d-flex align-items-center my-3 my-sm-0">
               <a href="index.html">
-                <img src="images/logo.svg" alt="logo" class="img-fluid">
+                <img src="<?php echo get_template_directory_uri(); ?>/assets/images/logo.svg" alt="logo" class="img-fluid">                
               </a>
             </div>
             <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
@@ -339,7 +327,6 @@
               </li>
             </ul>
           </div>
-
         </div>
       </div>
     </header>
