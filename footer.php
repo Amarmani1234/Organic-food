@@ -10,13 +10,13 @@
  */
 ?>
 
-<footer class="py-5">
+<footer class="py-5" style="background-color: #f4f4f4;">
     <div class="container-lg">
         <div class="row">
 
             <div class="col-lg-3 col-md-6 col-sm-6">
                 <div class="footer-menu">
-                    <img src="<?php echo get_template_directory_uri(); ?>/images/logo.svg" width="240" height="70" alt="logo">
+                    <img src="<?php echo get_template_directory_uri(); ?>/assets/images/logo.svg" width="240" height="70" alt="logo">
                     <div class="social-links mt-3">
                         <ul class="d-flex list-unstyled gap-2">
                             <li><a href="#" class="btn btn-outline-light"><svg width="16" height="16"><use xlink:href="#facebook"></use></svg></a></li>
@@ -86,14 +86,14 @@
     </div>
 </footer>
 
-<div id="footer-bottom">
+<div id="footer-bottom" style="background-color: #f4f4f4; color: black;">
     <div class="container-lg">
         <div class="row">
             <div class="col-md-6 copyright">
                 <p>© <?php echo date('Y'); ?> Organic. All rights reserved.</p>
             </div>
             <div class="col-md-6 credit-link text-start text-md-end">
-                <p>HTML Template by <a href="https://templatesjungle.com/">TemplatesJungle</a> Distributed By <a href="https://themewagon.com">ThemeWagon</a></p>
+                <p>Designed & Developed by <a style="text-decoration: none;" href="https://kaddora.com/"><strong> Kaddora Tech</strong></a> | Distributed By <a style="text-decoration: none;" href="https://kaddora.com"><strong>ThemeKaddora</strong></a></p>
             </div>
         </div>
     </div>
