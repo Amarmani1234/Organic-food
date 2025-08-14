@@ -44,6 +44,7 @@ function kaddora_enqueue_scripts() {
     wp_enqueue_script('kaddora-appointment-form', $theme_uri . '/assets/js/appointment-form.js', array('jquery'), null, true);
     wp_enqueue_script('custom', $theme_uri . '/assets/js/custom.js', array('jquery'), null, true);
     wp_enqueue_script('swiper', 'https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js', array(), null, true);
+    
 }
 add_action('wp_enqueue_scripts', 'kaddora_enqueue_scripts');
 
