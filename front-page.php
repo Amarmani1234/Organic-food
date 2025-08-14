@@ -345,8 +345,8 @@
       </div>
     </header>
     
-    <section style="background-image: url('/assets/images/banner-1.jpg');background-repeat: no-repeat;background-size: cover;">
-      <div class="container-lg">
+    <section style="background-image: url('<?php echo get_template_directory_uri(); ?>/assets/images/banner-1.jpg'); background-repeat: no-repeat; background-size: cover;"> 
+    <div class="container-lg">
         <div class="row">
           <div class="col-lg-6 pt-5 mt-5">
             <h2 class="display-1 ls-1"><span class="fw-bold text-primary">Organic</span> Foods at your <span class="fw-bold">Doorsteps</span></h2>
