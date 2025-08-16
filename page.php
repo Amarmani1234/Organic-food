@@ -7,6 +7,7 @@
                 <div class="entry-content">
                     <?php the_content(); ?>
                 </div>
+                <h1>Kaddora Organic Food Processing Noida</h2>
                 
 </article>
     <?php endwhile; ?>
