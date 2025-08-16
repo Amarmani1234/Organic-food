@@ -1,5 +1,5 @@
 <?php
-// Enqueue theme styles and scripts we add something
+
 function kaddora_enqueue_assets() {
     // CSS
     wp_enqueue_style('swiper', 'https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css', array(), null);
@@ -18,3 +18,4 @@ function kaddora_enqueue_assets() {
     wp_enqueue_script('main-script', get_template_directory_uri() . '/assets/js/script.js', array('jquery-old'), filemtime(get_template_directory() . '/assets/js/script.js'), true);
 }
 add_action('wp_enqueue_scripts', 'kaddora_enqueue_assets');
+
