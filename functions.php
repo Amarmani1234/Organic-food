@@ -1,5 +1,5 @@
 <?php
-// Enqueue theme styles and scripts
+// Enqueue theme styles and scripts we add something
 function kaddora_enqueue_assets() {
     // CSS
     wp_enqueue_style('swiper', 'https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css', array(), null);
