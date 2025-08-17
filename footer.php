@@ -30,12 +30,22 @@
                 <div class="footer-menu">
                     <h5 class="widget-title">Organic</h5>
                     <ul class="menu-list list-unstyled">
-                        <li><a href="#" class="nav-link">About us</a></li>
-                        <li><a href="#" class="nav-link">Conditions</a></li>
-                        <li><a href="#" class="nav-link">Our Journals</a></li>
-                        <li><a href="#" class="nav-link">Careers</a></li>
-                        <li><a href="#" class="nav-link">Affiliate Programme</a></li>
-                        <li><a href="#" class="nav-link">Ultras Press</a></li>
+                        <?php
+                if (has_nav_menu('footerLocationTwo')) {
+                    wp_nav_menu([
+                        'theme_location' => 'footerLocationTwo',
+                        'container' => false,
+                        'menu_class' => '',
+                        'items_wrap' => '<ul>%3$s</ul>',
+                        'depth' => 1
+                    ]);
+                } else {
+                    echo '<ul>';
+                    echo '<li><a href="' . esc_url(home_url('/')) . '">' . esc_html__('Service 1', 'mytheme') . '</a></li>';
+                    echo '<li><a href="' . esc_url(admin_url('nav-menus.php')) . '">' . esc_html__('Add Services', 'mytheme') . '</a></li>';
+                    echo '</ul>';
+                }
+                ?>
                     </ul>
                 </div>
             </div>
