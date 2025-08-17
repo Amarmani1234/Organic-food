@@ -1,8 +1,8 @@
 <?php
 /**
- * @link https://developer.wordpress.org/themes/basics/template-files/#template-partials
+ * @link Kaddora 
  *
- * @package Organic-Food-Theme
+ * @package Kaddora tech
  */
 ?>
 
@@ -12,7 +12,7 @@
 
             <div class="col-lg-3 col-md-6 col-sm-6">
                 <div class="footer-menu">
-                <img src="<?php echo get_template_directory_uri(); ?>/assets/images/logo.svg" width="240" height="70" alt="logo">
+              <img src="<?php echo get_template_directory_uri(); ?>/assets/images/logos.png" alt="logo" class="img-fluid" style="width:80px; height:80px;">                             
                    
                     <div class="social-links mt-3">
                         <ul class="d-flex list-unstyled gap-2">

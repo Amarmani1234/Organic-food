@@ -7,9 +7,21 @@
                 <div class="entry-content">
                     <?php the_content(); ?>
                 </div>
-                <h1>Kaddora Organic Food Processing Noida</h2>
                 
 </article>
     <?php endwhile; ?>
     <?php endif; ?>
 </section>
+
+
+<?php if (has_post_thumbnail()) : ?>
+    <div class="post-thumbnail">
+        <?php the_post_thumbnail('professorLandscape'); ?>
+        <?php the_post_thumbnail('professorPortrait'); ?>
+    </div>
+<?php endif; ?>
+
+<?php get_footer(); ?>
+
+
+
