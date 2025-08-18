@@ -584,5 +584,32 @@ a.btn-link.text-light:after {
 }
 /* ============ mobile view .end// ============ */
 
+/*=============Headr Css ==================== */
 
+.navbar-nav {
+  display: flex;            
+  flex-direction: row;      
+  justify-content: center;   
+  text-align: center;
+  padding-left: 0;           
+  margin-bottom: 0;          
+  list-style: none;   
+}
+
+.navbar-nav li {
+  list-style: none; 
+}
+
+.navbar-nav li a {
+  color: #fff !important;
+  text-decoration: none;
+  padding: 5px 10px;
+}
+
+.navbar-nav li a:hover {
+  color: #f1f1f1;
+  text-decoration: underline;
+}
+
+/*========================Ned heder============*/
 

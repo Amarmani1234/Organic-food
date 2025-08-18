@@ -245,9 +245,10 @@
         <div class="row py-3 border-bottom">          
           <div class="col-sm-4 col-lg-2 text-center text-sm-start d-flex gap-3 justify-content-center justify-content-md-start">
             <div class="d-flex align-items-center my-3 my-sm-0">
-              <a href="http://organic-food.local/">              
-              <img src="<?php echo get_template_directory_uri(); ?>/assets/images/logos.png" alt="logo" class="img-fluid" style="width:80px;height:80px;">                             
-              </a>
+              <a href="http://organic-food.local/" style="text-decoration:none;">              
+              <!-- <img src="</?php echo get_template_directory_uri(); ?>/assets/images/logos.png" alt="logo" class="img-fluid" style="width:80px;height:80px;">                              -->
+            <h5>Kaddora Organic</h5>  
+            </a>
             </div>
             <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
               aria-controls="offcanvasNavbar">
@@ -271,16 +272,6 @@
 
           <div class="col-lg-2">
             <ul class="navbar-nav list-unstyled d-flex flex-row gap-3 gap-lg-5 justify-content-center flex-wrap align-items-center mb-0 fw-bold text-uppercase text-dark">
-
-      <?php
-      wp_nav_menu(array(
-        'theme_location' => 'footerLocationOne',
-        'container' => false,
-        'menu_class' => 'footer-nav list-unstyled',
-        'fallback_cb' => false,
-      ));
-      ?>
-
             </ul>
           </div>
           
@@ -306,3 +297,22 @@
         </div>
       </div>
     </header>
+    
+   <header style="background-color:#6bb252;">
+  <div class="container-fluid">
+    <div class="row py-3 border-bottom">
+      <div class="col-12">
+        <?php
+        wp_nav_menu(array(
+          'theme_location' => 'footerLocationOne',
+          'container'      => false,
+          'menu_class'     => 'navbar-nav d-flex justify-content-center flex-row flex-wrap gap-3 gap-lg-5 mb-0 fw-bold text-uppercase',
+          'fallback_cb'    => false,
+        ));
+        ?>
+      </div>
+    </div>
+  </div>
+</header>
+
+

@@ -5,8 +5,7 @@ function kaddora_theme_setup() {
     add_theme_support('post-thumbnails');
 
     register_nav_menus(array(
-       // 'primary' => __('Primary Menu', 'kaddora'),
-       // 'footer'  => __('Footer Menu', 'kaddora')
+      
     ));
 }
 add_action('after_setup_theme', 'kaddora_theme_setup');
@@ -33,5 +32,74 @@ function kaddora_enqueue_assets() {
     wp_enqueue_script('main-script', get_template_directory_uri() . '/assets/js/script.js', array('jquery-old'), filemtime(get_template_directory() . '/assets/js/script.js'), true);
 }
 add_action('wp_enqueue_scripts', 'kaddora_enqueue_assets');
+
+//-
+
+add_action('admin_post_nopriv_custom_login_action', 'custom_handle_user_login');
+add_action('admin_post_custom_login_action', 'custom_handle_user_login');
+
+function custom_handle_user_login() {
+    if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['action'] === 'custom_login_action') {
+        if (!session_id()) {
+            session_start();
+        }
+        if (!isset($_POST['custom_login_nonce']) || !wp_verify_nonce($_POST['custom_login_nonce'], 'custom-login-nonce')) {
+            $_SESSION['login_error'] = 'Security verification failed.';
+            wp_safe_redirect(wp_get_referer());
+            exit;
+        }
+
+        $creds = array();
+        $creds['user_login'] = sanitize_user($_POST['user_login']);
+        $creds['user_password'] = sanitize_text_field($_POST['user_pass']);
+        $creds['remember'] = isset($_POST['rememberme']) ? true : false;
+
+        $user = wp_signon($creds, false);
+
+        if (is_wp_error($user)) {
+            $_SESSION['login_error'] = $user->get_error_message();
+            wp_safe_redirect(wp_get_referer());
+            exit;
+        } else {
+            $_SESSION['login_success'] = 'Login successful!';
+            wp_safe_redirect(home_url('/dashboard/')); 
+            exit;
+        }
+    }
+}
+//
+add_action('admin_post_nopriv_custom_user_register', 'handle_custom_user_register');
+add_action('admin_post_custom_user_register', 'handle_custom_user_register');
+function handle_custom_user_register() {
+    if (!isset($_POST['custom_user_register_nonce']) || !wp_verify_nonce($_POST['custom_user_register_nonce'], 'custom_user_register')) {
+        wp_die('Nonce verification failed.');
+    }
+    $name     = sanitize_text_field($_POST['name']);
+    $email    = sanitize_email($_POST['email']);
+    $password = $_POST['password'];
+
+    if (email_exists($email)) {
+        wp_redirect(home_url('?register=exists'));
+        exit;
+    }
+    $userdata = array(
+        'user_login'    => $email,
+        'user_email'    => $email,
+        'user_pass'     => $password,
+        'display_name'  => $name,
+        'first_name'    => $name,
+        'role'          => 'subscriber' 
+    );
+    $user_id = wp_insert_user($userdata);
+
+    if (!is_wp_error($user_id)) {
+        wp_redirect(home_url('?register=success'));
+        exit;
+    } else {
+        wp_redirect(home_url('?register=error'));
+        exit;
+    }
+}
+
 
 
