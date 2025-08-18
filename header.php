@@ -245,9 +245,15 @@
         <div class="row py-3 border-bottom">          
           <div class="col-sm-4 col-lg-2 text-center text-sm-start d-flex gap-3 justify-content-center justify-content-md-start">
             <div class="d-flex align-items-center my-3 my-sm-0">
+<<<<<<< HEAD
               <a href="http://organic-food.local/" style="text-decoration: none;">              
               <!-- <img src="</?php echo get_template_directory_uri(); ?>/assets/images/logos.png" alt="logo" class="img-fluid" style="width:80px;height:80px;">                              -->
               <h4>Kaddora Tech</h4>
+=======
+              <a href="http://organic-food.local/" style="text-decoration:none;">              
+              <!-- <img src="</?php echo get_template_directory_uri(); ?>/assets/images/logos.png" alt="logo" class="img-fluid" style="width:80px;height:80px;">                              -->
+            <h5>Kaddora Organic</h5>  
+>>>>>>> Amar
             </a>
             </div>
             <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
