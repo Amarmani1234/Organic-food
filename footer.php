@@ -1,13 +1,8 @@
-
 <?php
 /**
- * The template for displaying the footer
+ * @link Kaddora 
  *
- * Contains the closing of the #content div and all content after.
- *
- * @link https://developer.wordpress.org/themes/basics/template-files/#template-partials
- *
- * @package Organic-Food-Theme
+ * @package Kaddora tech
  */
 ?>
 
@@ -17,7 +12,8 @@
 
             <div class="col-lg-3 col-md-6 col-sm-6">
                 <div class="footer-menu">
-                    <img src="<?php echo get_template_directory_uri(); ?>/assets/images/logo.svg" width="240" height="70" alt="logo">
+              <img src="<?php echo get_template_directory_uri(); ?>/assets/images/logos.png" alt="logo" class="img-fluid" style="width:80px; height:80px;">                             
+                   
                     <div class="social-links mt-3">
                         <ul class="d-flex list-unstyled gap-2">
                             <li><a href="#" class="btn btn-outline-light"><svg width="16" height="16"><use xlink:href="#facebook"></use></svg></a></li>
@@ -34,12 +30,22 @@
                 <div class="footer-menu">
                     <h5 class="widget-title">Organic</h5>
                     <ul class="menu-list list-unstyled">
-                        <li><a href="#" class="nav-link">About us</a></li>
-                        <li><a href="#" class="nav-link">Conditions</a></li>
-                        <li><a href="#" class="nav-link">Our Journals</a></li>
-                        <li><a href="#" class="nav-link">Careers</a></li>
-                        <li><a href="#" class="nav-link">Affiliate Programme</a></li>
-                        <li><a href="#" class="nav-link">Ultras Press</a></li>
+                        <?php
+                if (has_nav_menu('footerLocationTwo')) {
+                    wp_nav_menu([
+                        'theme_location' => 'footerLocationTwo',
+                        'container' => false,
+                        'menu_class' => '',
+                        'items_wrap' => '<ul>%3$s</ul>',
+                        'depth' => 1
+                    ]);
+                } else {
+                    echo '<ul>';
+                    echo '<li><a href="' . esc_url(home_url('/')) . '">' . esc_html__('Service 1', 'mytheme') . '</a></li>';
+                    echo '<li><a href="' . esc_url(admin_url('nav-menus.php')) . '">' . esc_html__('Add Services', 'mytheme') . '</a></li>';
+                    echo '</ul>';
+                }
+                ?>
                     </ul>
                 </div>
             </div>
