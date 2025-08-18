@@ -100,6 +100,34 @@ function handle_custom_user_register() {
         exit;
     }
 }
+//
+add_action('after_setup_theme', 'initialize_woocommerce_image_sizes');
+function initialize_woocommerce_image_sizes() {
+    if (!function_exists('wc_get_image_size')) return;
+
+    $image_sizes = array(
+        'woocommerce_thumbnail' => array(
+            'width'  => 300,
+            'height' => 300,
+            'crop'   => true
+        ),
+        'woocommerce_gallery_thumbnail' => array(
+            'width'  => 100,
+            'height' => 100,
+            'crop'   => true
+        )
+    );
+    foreach ($image_sizes as $name => $size) {
+        $current_size = wc_get_image_size($name);
+        
+        if (empty($current_size) || !isset($current_size['width'])) {
+            update_option("woocommerce_{$name}_width", $size['width']);
+            update_option("woocommerce_{$name}_height", $size['height']);
+            update_option("woocommerce_{$name}_crop", $size['crop'] ? 1 : 0);
+        }
+    }
+}
+
 
 
 
