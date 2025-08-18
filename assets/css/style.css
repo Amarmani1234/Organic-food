@@ -585,7 +585,6 @@ a.btn-link.text-light:after {
 /* ============ mobile view .end// ============ */
 
 /*=============Headr Css ==================== */
-
   #footer-menu a {
     color: white !important;
     text-decoration: none !important;
@@ -593,5 +592,5 @@ a.btn-link.text-light:after {
   #footer-menu li {
     display: inline-block;
   }
-
 /*======================== Ned heder============*/
+
