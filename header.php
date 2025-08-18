@@ -297,22 +297,24 @@
         </div>
       </div>
     </header>
-    
-   <header style="background-color:#6bb252;">
-  <div class="container-fluid">
+
+<header style="background-color:#6bb252;">
+  <div class="container">
     <div class="row py-3 border-bottom">
       <div class="col-12">
         <?php
         wp_nav_menu(array(
           'theme_location' => 'footerLocationOne',
-          'container'      => false,
-          'menu_class'     => 'navbar-nav d-flex justify-content-center flex-row flex-wrap gap-3 gap-lg-5 mb-0 fw-bold text-uppercase',
-          'fallback_cb'    => false,
+          'container' => false,
+          'menu_class' => 'd-flex justify-content-center gap-3 gap-lg-4 fw-bold',
+          'fallback_cb' => false,
+          'items_wrap' => '<ul id="footer-menu" class="%2$s" style="color:white; list-style:none; padding:0; margin:0;">%3$s</ul>'
         ));
         ?>
       </div>
     </div>
   </div>
 </header>
+
 
 
