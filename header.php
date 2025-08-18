@@ -272,16 +272,6 @@
 
           <div class="col-lg-2">
             <ul class="navbar-nav list-unstyled d-flex flex-row gap-3 gap-lg-5 justify-content-center flex-wrap align-items-center mb-0 fw-bold text-uppercase text-dark">
-
-      <?php
-      wp_nav_menu(array(
-        'theme_location' => 'footerLocationOne',
-        'container' => false,
-        'menu_class' => 'footer-nav list-unstyled',
-        'fallback_cb' => false,
-      ));
-      ?>
-
             </ul>
           </div>
           
@@ -304,6 +294,30 @@
               </li>
             </ul>
           </div>
+        </div>
+      </div>
+    </header>
+    
+    <!----------------------------------------Header Second---------------------------------------->
+    <!-----------------------------------Header Second---------------------------------------------->
+    <header style="background-color:#6bb252;">
+      <div class="container-fluid">
+        <div class="row py-3 border-bottom">                    
+         
+
+          <div class="col-lg-2">
+            <ul class="navbar-nav list-unstyled d-flex flex-row gap-3 gap-lg-5 justify-content-center flex-wrap align-items-center mb-0 fw-bold text-uppercase text-dark">
+
+      <?php
+      wp_nav_menu(array(
+        'theme_location' => 'footerLocationOne',
+        'container' => false,
+        'menu_class' => 'footer-nav list-unstyled',
+        'fallback_cb' => false,
+      ));
+      ?>
+            </ul>
+          </div>        
         </div>
       </div>
     </header>
