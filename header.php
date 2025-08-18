@@ -272,16 +272,6 @@
 
           <div class="col-lg-2">
             <ul class="navbar-nav list-unstyled d-flex flex-row gap-3 gap-lg-5 justify-content-center flex-wrap align-items-center mb-0 fw-bold text-uppercase text-dark">
-
-      <?php
-      wp_nav_menu(array(
-        'theme_location' => 'footerLocationOne',
-        'container' => false,
-        'menu_class' => 'footer-nav list-unstyled',
-        'fallback_cb' => false,
-      ));
-      ?>
-
             </ul>
           </div>
           
@@ -304,6 +294,38 @@
               </li>
             </ul>
           </div>
+        </div>
+      </div>
+    </header>
+
+  <!-------------------------------------------------------Second --------------------------------------->
+  <!-------------------------------------------------------Second --------------------------------------->
+  <!-------------------------------------------------------Second --------------------------------------->
+<body>
+    <header style="background-color:#6bb252;">
+      <div class="container-fluid">
+        <div class="row py-3 border-bottom">          
+          <div class="col-sm-4 col-lg-2 text-center text-sm-start d-flex gap-3 justify-content-center justify-content-md-start">
+            <div class="d-flex align-items-center my-3 my-sm-0">
+            </div>            
+          </div>
+          
+          <div class="col-sm-6 offset-sm-2 offset-md-0 col-lg-4">
+            Home
+          </div>
+
+          <div class="col-lg-2">
+        <ul class="navbar-nav list-unstyled d-flex flex-row gap-3 gap-lg-5 justify-content-center flex-wrap align-items-center mb-0 fw-bold text-uppercase text-white">
+      <?php
+      wp_nav_menu(array(
+        'theme_location' => 'footerLocationOne',
+        'container' => false,
+        'menu_class' => 'footer-nav list-unstyled',
+        'fallback_cb' => false,
+      ));
+      ?>
+            </ul>
+          </div>         
         </div>
       </div>
     </header>

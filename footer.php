@@ -13,11 +13,7 @@
             <div class="col-lg-3 col-md-6 col-sm-6">
                 <div class="footer-menu">
               <!-- <img src="</?php echo get_template_directory_uri(); ?>/assets/images/logos.png" alt="logo" class="img-fluid" style="width:80px; height:80px;">                              -->
-<<<<<<< HEAD
-                   <h4>Kaddora Tech</h4> 
-=======
                   <h5>Kaddora Organic</h5>   
->>>>>>> Amar
                     <div class="social-links mt-3">
                         <ul class="d-flex list-unstyled gap-2">
                             <li><a href="#" class="btn btn-outline-light"><svg width="16" height="16"><use xlink:href="#facebook"></use></svg></a></li>
