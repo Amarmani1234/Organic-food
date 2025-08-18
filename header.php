@@ -256,11 +256,11 @@
             </button>
           </div>
           
-          <div class="col-sm-6 offset-sm-2 offset-md-0 col-lg-4">
-            <div class="search-bar row bg-light p-2 rounded-4">
+          <div class="col-sm-6 offset-sm-2 offset-md-0 col-lg-5">
+            <div class="search-bar row bg-light p-2 rounded-4" style="border:1px solid gray;">
              
               <div class="col-11 col-md-11">
-                <form id="search-form" class="text-center" action="index.html" method="post">
+                <form id="search-form" class="text-center" action="#" method="post">
                   <input type="text" class="form-control border-0 bg-transparent" placeholder="Search for more than 20,000 products">
                 </form>
               </div>
