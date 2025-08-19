@@ -84,7 +84,7 @@ get_header(); ?>
 
                 if ($loop->have_posts()) {
                     while ($loop->have_posts()) : $loop->the_post(); ?>
-                        <div class="col-md-4 col-sm-6">
+                        <div class="col-md-4 col-sm-4">
                             <div class="card h-100 shadow-sm border-0">
                                 <a href="<?php the_permalink(); ?>" class="d-flex justify-content-center align-items-center p-3">
                                     <?php woocommerce_template_loop_product_thumbnail(); ?>
