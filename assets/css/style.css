@@ -595,26 +595,6 @@ a.btn-link.text-light:after {
 /*======================== Ned heder============*/
 
 
-/* shop page */
-.shop-layout {
-    display: flex;
-    gap: 20px;
-}
-
-.shop-sidebar {
-    flex: 0 0 250px; /* fixed width sidebar */
-    background: #f8f8f8;
-    padding: 20px;
-    border: 1px solid #ddd;
-    border-radius: 6px;
-}
-
-.shop-products {
-    flex: 1;
-}
-
-.products-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 20px;
+.auth-image{
+  height: 70%;
 }
