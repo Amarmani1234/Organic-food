@@ -305,48 +305,50 @@
       </div>
     </div>
 
-    <div class="offcanvas offcanvas-end" data-bs-scroll="true" tabindex="-1" id="offcanvasCart">
-      <div class="offcanvas-header justify-content-center">
-        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    <!-- Mini Cart Offcanvas -->
+    <?php
+    // Get cart instance
+    $cart = WC()->cart;
+    ?>
+
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasCart" aria-labelledby="offcanvasCartLabel">
+      <div class="offcanvas-header">
+        <h5 id="offcanvasCartLabel">My Cart</h5>
+        <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
       </div>
       <div class="offcanvas-body">
-        <div class="order-md-last">
-          <h4 class="d-flex justify-content-between align-items-center mb-3">
-            <span class="text-primary">Your cart</span>
-            <span class="badge bg-primary rounded-pill">3</span>
-          </h4>
-          <ul class="list-group mb-3">
-            <li class="list-group-item d-flex justify-content-between lh-sm">
-              <div>
-                <h6 class="my-0">Growers cider</h6>
-                <small class="text-body-secondary">Brief description</small>
-              </div>
-              <span class="text-body-secondary">$12</span>
-            </li>
-            <li class="list-group-item d-flex justify-content-between lh-sm">
-              <div>
-                <h6 class="my-0">Fresh grapes</h6>
-                <small class="text-body-secondary">Brief description</small>
-              </div>
-              <span class="text-body-secondary">$8</span>
-            </li>
-            <li class="list-group-item d-flex justify-content-between lh-sm">
-              <div>
-                <h6 class="my-0">Heinz tomato ketchup</h6>
-                <small class="text-body-secondary">Brief description</small>
-              </div>
-              <span class="text-body-secondary">$5</span>
-            </li>
-            <li class="list-group-item d-flex justify-content-between">
-              <span>Total (USD)</span>
-              <strong>$20</strong>
-            </li>
-          </ul>
 
-          <button class="w-100 btn btn-primary btn-lg" type="submit">Continue to checkout</button>
-        </div>
+        <?php if ($cart && !$cart->is_empty()): ?>
+          <?php foreach ($cart->get_cart() as $cart_item_key => $cart_item):
+            $_product = $cart_item['data'];
+            $product_id = $cart_item['product_id'];
+            ?>
+            <div class="d-flex justify-content-between align-items-center border-bottom pb-2 mb-2">
+              <div>
+                <strong><?php echo $_product->get_name(); ?></strong><br>
+                <small>Qty: <?php echo $cart_item['quantity']; ?></small>
+              </div>
+              <span><?php echo WC()->cart->get_product_subtotal($_product, $cart_item['quantity']); ?></span>
+            </div>
+          <?php endforeach; ?>
+
+          <!-- Cart Footer -->
+          <div class="mt-3">
+            <div class="d-flex justify-content-between mb-2">
+              <strong>Total:</strong>
+              <strong><?php echo WC()->cart->get_cart_total(); ?></strong>
+            </div>
+            <a href="<?php echo wc_get_cart_url(); ?>" class="btn btn-primary w-100 mb-2">View Cart</a>
+            <a href="<?php echo wc_get_checkout_url(); ?>" class="btn btn-success w-100">Checkout</a>
+          </div>
+
+        <?php else: ?>
+          <p>Your cart is empty.</p>
+        <?php endif; ?>
+
       </div>
     </div>
+
 
     <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavbar">
 
@@ -359,7 +361,7 @@
 
         <ul class="navbar-nav justify-content-end menu-list list-unstyled d-flex gap-md-3 mb-0">
           <li class="nav-item border-dashed active">
-            <a href="index.html" class="nav-link d-flex align-items-center gap-3 text-dark p-2">
+            <a href="/categories" class="nav-link d-flex align-items-center gap-3 text-dark p-2">
               <svg width="24" height="24" viewBox="0 0 24 24">
                 <use xlink:href="#fruits"></use>
               </svg>
@@ -367,7 +369,7 @@
             </a>
           </li>
           <li class="nav-item border-dashed">
-            <a href="index.html" class="nav-link d-flex align-items-center gap-3 text-dark p-2">
+            <a href="/categories" class="nav-link d-flex align-items-center gap-3 text-dark p-2">
               <svg width="24" height="24" viewBox="0 0 24 24">
                 <use xlink:href="#dairy"></use>
               </svg>
@@ -375,7 +377,7 @@
             </a>
           </li>
           <li class="nav-item border-dashed">
-            <a href="index.html" class="nav-link d-flex align-items-center gap-3 text-dark p-2">
+            <a href="/categories" class="nav-link d-flex align-items-center gap-3 text-dark p-2">
               <svg width="24" height="24" viewBox="0 0 24 24">
                 <use xlink:href="#meat"></use>
               </svg>
@@ -383,7 +385,7 @@
             </a>
           </li>
           <li class="nav-item border-dashed">
-            <a href="index.html" class="nav-link d-flex align-items-center gap-3 text-dark p-2">
+            <a href="/categories" class="nav-link d-flex align-items-center gap-3 text-dark p-2">
               <svg width="24" height="24" viewBox="0 0 24 24">
                 <use xlink:href="#seafood"></use>
               </svg>
@@ -391,7 +393,7 @@
             </a>
           </li>
           <li class="nav-item border-dashed">
-            <a href="index.html" class="nav-link d-flex align-items-center gap-3 text-dark p-2">
+            <a href="/categories" class="nav-link d-flex align-items-center gap-3 text-dark p-2">
               <svg width="24" height="24" viewBox="0 0 24 24">
                 <use xlink:href="#bakery"></use>
               </svg>
@@ -399,7 +401,7 @@
             </a>
           </li>
           <li class="nav-item border-dashed">
-            <a href="index.html" class="nav-link d-flex align-items-center gap-3 text-dark p-2">
+            <a href="/categories" class="nav-link d-flex align-items-center gap-3 text-dark p-2">
               <svg width="24" height="24" viewBox="0 0 24 24">
                 <use xlink:href="#canned"></use>
               </svg>
@@ -407,7 +409,7 @@
             </a>
           </li>
           <li class="nav-item border-dashed">
-            <a href="index.html" class="nav-link d-flex align-items-center gap-3 text-dark p-2">
+            <a href="/categories" class="nav-link d-flex align-items-center gap-3 text-dark p-2">
               <svg width="24" height="24" viewBox="0 0 24 24">
                 <use xlink:href="#frozen"></use>
               </svg>
@@ -415,7 +417,7 @@
             </a>
           </li>
           <li class="nav-item border-dashed">
-            <a href="index.html" class="nav-link d-flex align-items-center gap-3 text-dark p-2">
+            <a href="/categories" class="nav-link d-flex align-items-center gap-3 text-dark p-2">
               <svg width="24" height="24" viewBox="0 0 24 24">
                 <use xlink:href="#pasta"></use>
               </svg>
@@ -423,7 +425,7 @@
             </a>
           </li>
           <li class="nav-item border-dashed">
-            <a href="index.html" class="nav-link d-flex align-items-center gap-3 text-dark p-2">
+            <a href="/categories" class="nav-link d-flex align-items-center gap-3 text-dark p-2">
               <svg width="24" height="24" viewBox="0 0 24 24">
                 <use xlink:href="#breakfast"></use>
               </svg>
@@ -431,7 +433,7 @@
             </a>
           </li>
           <li class="nav-item border-dashed">
-            <a href="index.html" class="nav-link d-flex align-items-center gap-3 text-dark p-2">
+            <a href="/categories" class="nav-link d-flex align-items-center gap-3 text-dark p-2">
               <svg width="24" height="24" viewBox="0 0 24 24">
                 <use xlink:href="#snacks"></use>
               </svg>
@@ -451,15 +453,15 @@
             </button>
             <div class="collapse" id="beverages-collapse">
               <ul class="btn-toggle-nav list-unstyled fw-normal ps-5 pb-1">
-                <li class="border-bottom py-2"><a href="index.html" class="dropdown-item">Water</a></li>
-                <li class="border-bottom py-2"><a href="index.html" class="dropdown-item">Juice</a></li>
-                <li class="border-bottom py-2"><a href="index.html" class="dropdown-item">Soda</a></li>
-                <li class="border-bottom py-2"><a href="index.html" class="dropdown-item">Tea</a></li>
+                <li class="border-bottom py-2"><a href="/categories" class="dropdown-item">Water</a></li>
+                <li class="border-bottom py-2"><a href="/categories" class="dropdown-item">Juice</a></li>
+                <li class="border-bottom py-2"><a href="/categories" class="dropdown-item">Soda</a></li>
+                <li class="border-bottom py-2"><a href="/categories" class="dropdown-item">Tea</a></li>
               </ul>
             </div>
           </li>
           <li class="nav-item border-dashed">
-            <a href="index.html" class="nav-link d-flex align-items-center gap-3 text-dark p-2">
+            <a href="/categories" class="nav-link d-flex align-items-center gap-3 text-dark p-2">
               <svg width="24" height="24" viewBox="0 0 24 24">
                 <use xlink:href="#spices"></use>
               </svg>
@@ -467,7 +469,7 @@
             </a>
           </li>
           <li class="nav-item border-dashed">
-            <a href="index.html" class="nav-link d-flex align-items-center gap-3 text-dark p-2">
+            <a href="/categories" class="nav-link d-flex align-items-center gap-3 text-dark p-2">
               <svg width="24" height="24" viewBox="0 0 24 24">
                 <use xlink:href="#baby"></use>
               </svg>
@@ -475,7 +477,7 @@
             </a>
           </li>
           <li class="nav-item border-dashed">
-            <a href="index.html" class="nav-link d-flex align-items-center gap-3 text-dark p-2">
+            <a href="/categories" class="nav-link d-flex align-items-center gap-3 text-dark p-2">
               <svg width="24" height="24" viewBox="0 0 24 24">
                 <use xlink:href="#health"></use>
               </svg>
@@ -483,7 +485,7 @@
             </a>
           </li>
           <li class="nav-item border-dashed">
-            <a href="index.html" class="nav-link d-flex align-items-center gap-3 text-dark p-2">
+            <a href="/categories" class="nav-link d-flex align-items-center gap-3 text-dark p-2">
               <svg width="24" height="24" viewBox="0 0 24 24">
                 <use xlink:href="#household"></use>
               </svg>
@@ -491,7 +493,7 @@
             </a>
           </li>
           <li class="nav-item border-dashed">
-            <a href="index.html" class="nav-link d-flex align-items-center gap-3 text-dark p-2">
+            <a href="/categories" class="nav-link d-flex align-items-center gap-3 text-dark p-2">
               <svg width="24" height="24" viewBox="0 0 24 24">
                 <use xlink:href="#personal"></use>
               </svg>
@@ -499,7 +501,7 @@
             </a>
           </li>
           <li class="nav-item border-dashed">
-            <a href="index.html" class="nav-link d-flex align-items-center gap-3 text-dark p-2">
+            <a href="/categories" class="nav-link d-flex align-items-center gap-3 text-dark p-2">
               <svg width="24" height="24" viewBox="0 0 24 24">
                 <use xlink:href="#pet"></use>
               </svg>
@@ -511,15 +513,14 @@
     </div>
     <header>
       <div class="container-fluid">
-        <div class="row py-3 border-bottom">
-          <div
-            class="col-sm-4 col-lg-2 text-center text-sm-start d-flex gap-3 justify-content-center justify-content-md-start">
-            <div class="d-flex align-items-center my-3 my-sm-0">
-              <a href="http://organic-food.local/" style="text-decoration:none;">
-                <!-- <img src="</?php echo get_template_directory_uri(); ?>/assets/images/logos.png" alt="logo" class="img-fluid" style="width:80px;height:80px;">                              -->
-                <h5>Kaddora Organic</h5>
-              </a>
-            </div>
+        <div class="row py-3 border-bottom align-items-center">
+
+          <!-- Logo + Toggler -->
+          <div class="col-6 col-md-2 d-flex align-items-center gap-3">
+            <a href="http://organic-food.local/" class="text-decoration-none d-flex align-items-center">
+              <!-- <img src="<?php echo get_template_directory_uri(); ?>/assets/images/logos.png" alt="logo" class="img-fluid" style="width:80px;height:80px;"> -->
+              <h5 class="mb-0">Kaddora Organic</h5>
+            </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
               aria-controls="offcanvasNavbar">
               <svg width="24" height="24" viewBox="0 0 24 24">
@@ -528,60 +529,53 @@
             </button>
           </div>
 
-          <div class="col-sm-6 offset-sm-2 offset-md-0 col-lg-4">
-            <div class="search-bar row bg-light p-2 rounded-4">
-
-              <div class="col-11 col-md-11">
-                <form id="search-form" class="text-center" action="index.html" method="post">
-                  <input type="text" class="form-control border-0 bg-transparent"
-                    placeholder="Search for more than 20,000 products">
-                </form>
-              </div>
-              <div class="col-1">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-                  <path fill="currentColor"
-                    d="M21.71 20.29L18 16.61A9 9 0 1 0 16.61 18l3.68 3.68a1 1 0 0 0 1.42 0a1 1 0 0 0 0-1.39ZM11 18a7 7 0 1 1 7-7a7 7 0 0 1-7 7Z" />
-                </svg>
-              </div>
+          <!-- Search -->
+          <div class="col-12 col-md-5">
+            <div class="search-bar d-flex bg-light p-2 rounded-4 align-items-center">
+              <form id="search-form" class="flex-grow-1 me-2" action="index.html" method="post">
+                <input type="text" class="form-control border-0 bg-transparent"
+                  placeholder="Search for more than 20,000 products">
+              </form>
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                <path fill="currentColor"
+                  d="M21.71 20.29L18 16.61A9 9 0 1 0 16.61 18l3.68 3.68a1 1 0 0 0 1.42 0a1 1 0 0 0 0-1.39ZM11 18a7 7 0 1 1 7-7a7 7 0 0 1-7 7Z" />
+              </svg>
             </div>
           </div>
 
-          <div class="col-lg-2">
-            <ul
-              class="navbar-nav list-unstyled d-flex flex-row gap-3 gap-lg-5 justify-content-center flex-wrap align-items-center mb-0 fw-bold text-uppercase text-dark">
+          <!-- Placeholder Nav (optional) -->
+          <div class="col-md-2 d-none d-md-flex justify-content-center">
+            <ul class="navbar-nav list-unstyled d-flex flex-row gap-3 fw-bold text-uppercase text-dark mb-0">
+              <!-- Example Nav items -->
             </ul>
           </div>
 
-          <div class="col-sm-8 col-lg-2 d-flex gap-5 align-items-center justify-content-center justify-content-sm-end">
-            <ul class="d-flex justify-content-end list-unstyled m-0">
+          <!-- Cart + Auth -->
+          <div class="col-6 col-md-3 d-flex justify-content-end align-items-center gap-3">
+            <ul class="d-flex list-unstyled mb-0 align-items-center gap-3">
+
               <li>
-                <!-- <a href="/login.php" class="p-2 mx-1">
-                  <svg width="24" height="24">
-                    <use xlink:href="#user"></use>
-                  </svg>
-                </a> -->
-              </li>
-              <li>
-                <a href="#" class="p-2 mx-1">
+                <a href="#" class="p-2">
                   <svg width="24" height="24">
                     <use xlink:href="#wishlist"></use>
                   </svg>
                 </a>
               </li>
+
               <li>
-                <a href="#" class="p-2 mx-1" data-bs-toggle="offcanvas" data-bs-target="#offcanvasCart"
-                  aria-controls="offcanvasCart">
-                  <svg width="24" height="24">
+                <a href="javascript:void(0)" class="p-2 d-flex align-items-center text-decoration-none text-gray"
+                  data-bs-toggle="offcanvas" data-bs-target="#offcanvasCart" aria-controls="offcanvasCart">
+                  <svg width="24" height="24" class="me-1">
                     <use xlink:href="#shopping-bag"></use>
                   </svg>
+                  My Cart
                 </a>
               </li>
 
-              <div class="ms-lg-3 d-flex gap-2 auth-button">
+              <!-- Auth -->
+              <div class="d-flex gap-2 auth-button">
                 <?php if (is_user_logged_in()):
                   $current_user = wp_get_current_user(); ?>
-
-
                   <li class="nav-item">
                     <span class="nav-link text-gray">Welcome,
                       <?php echo esc_html($current_user->user_firstname); ?></span>
@@ -589,9 +583,7 @@
                   <li class="nav-item">
                     <a class="nav-link" href="<?php echo wp_logout_url(site_url('/login')); ?>">Logout</a>
                   </li>
-
                 <?php else: ?>
-
                   <li class="nav-item <?php if (is_page('login') || wp_get_post_parent_id(0) == 181)
                     echo 'current-menu-item'; ?>">
                     <a class="nav-link" href="<?php echo site_url('/login'); ?>">Login</a>
@@ -600,15 +592,15 @@
                     echo 'current-menu-item'; ?>">
                     <a class="nav-link" href="<?php echo site_url('/sign-up'); ?>">Sign Up</a>
                   </li>
-
                 <?php endif; ?>
-
               </div>
+
             </ul>
           </div>
         </div>
       </div>
     </header>
+
 
     <header style="background-color:#6bb252;">
       <div class="container">
@@ -627,3 +619,8 @@
         </div>
       </div>
     </header>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+
+
+    
