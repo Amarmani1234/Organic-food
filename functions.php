@@ -11,6 +11,38 @@ function kaddora_theme_setup() {
 add_action('after_setup_theme', 'kaddora_theme_setup');
 
 
+
+// Ajax fetch cart items
+add_action( 'wp_ajax_get_cart_items', 'get_cart_items' );
+add_action( 'wp_ajax_nopriv_get_cart_items', 'get_cart_items' );
+
+function get_cart_items() {
+    $cart_items = WC()->cart->get_cart();
+    $response = [];
+
+    foreach ( $cart_items as $cart_item_key => $cart_item ) {
+        $product   = $cart_item['data'];
+        $product_id = $product->get_id();
+        $response[] = [
+            'id'       => $product_id,
+            'name'     => $product->get_name(),
+            'qty'      => $cart_item['quantity'],
+            'price'    => wc_price( $product->get_price() * $cart_item['quantity'] ),
+            'subtotal' => wc_price( $cart_item['line_total'] ),
+            'url'      => get_permalink( $product_id ),
+            'image'    => wp_get_attachment_image_url( $product->get_image_id(), 'thumbnail' )
+        ];
+    }
+
+    wp_send_json([
+        'items' => $response,
+        'total' => WC()->cart->get_cart_total(),
+        'count' => WC()->cart->get_cart_contents_count(),
+    ]);
+}
+
+
+
 function university_features() {
     register_nav_menu('footerLocationOne', 'Footer Location One');
     register_nav_menu('footerLocationTwo', 'Footer Location Two');
@@ -32,13 +64,18 @@ function kaddora_enqueue_assets() {
     wp_enqueue_script('bootstrap', 'https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js', array(), null, true);
     wp_enqueue_script('plugins', get_template_directory_uri() . '/assets/js/plugins.js', array('jquery-old'), filemtime(get_template_directory() . '/assets/js/plugins.js'), true);
     wp_enqueue_script('main-script', get_template_directory_uri() . '/assets/js/script.js', array('jquery-old'), filemtime(get_template_directory() . '/assets/js/script.js'), true);
+    wp_enqueue_script("cart-ajax", get_template_directory_uri() . "/js/cart.js", ["jquery"], "1.0", true);
 }
 add_action('wp_enqueue_scripts', 'kaddora_enqueue_assets');
 
-//-
 
 add_action('admin_post_nopriv_custom_login_action', 'custom_handle_user_login');
 add_action('admin_post_custom_login_action', 'custom_handle_user_login');
+
+
+
+
+
 
 function custom_handle_user_login() {
     if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['action'] === 'custom_login_action') {
