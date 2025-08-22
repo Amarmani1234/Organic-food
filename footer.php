@@ -12,8 +12,8 @@
 
             <div class="col-lg-3 col-md-6 col-sm-6">
                 <div class="footer-menu">
-              <!-- <img src="</?php echo get_template_directory_uri(); ?>/assets/images/logos.png" alt="logo" class="img-fluid" style="width:80px; height:80px;">                              -->
-                  <h5>Kaddora Organic</h5>   
+                    <!-- <img src="<?php echo get_template_directory_uri(); ?>/assets/images/logos.png" alt="logo" class="img-fluid" style="width:80px; height:80px;"> -->
+                    <h5>Kaddora Organic</h5>   
                     <div class="social-links mt-3">
                         <ul class="d-flex list-unstyled gap-2">
                             <li><a href="#" class="btn btn-outline-light"><svg width="16" height="16"><use xlink:href="#facebook"></use></svg></a></li>
@@ -31,21 +31,20 @@
                     <h5 class="widget-title">Organic</h5>
                     <ul class="menu-list list-unstyled">
                         <?php
-                if (has_nav_menu('footerLocationTwo')) {
-                    wp_nav_menu([
-                        'theme_location' => 'footerLocationTwo',
-                        'container' => false,
-                        'menu_class' => '',
-                        'items_wrap' => '<ul>%3$s</ul>',
-                        'depth' => 1
-                    ]);
-                } else {
-                    echo '<ul>';
-                    echo '<li><a href="' . esc_url(home_url('/')) . '">' . esc_html__('Service 1', 'mytheme') . '</a></li>';
-                    echo '<li><a href="' . esc_url(admin_url('nav-menus.php')) . '">' . esc_html__('Add Services', 'mytheme') . '</a></li>';
-                    echo '</ul>';
-                }
-                ?>
+                        if (has_nav_menu('footerLocationTwo')) {
+                            wp_nav_menu([
+                                'theme_location' => 'footerLocationTwo',
+                                'container' => false,
+                                'menu_class' => '',
+                                'items_wrap' => '%3$s', // Removed <ul> wrapper since we already have it
+                                'depth' => 1,
+                                'fallback_cb' => false
+                            ]);
+                        } else {
+                            echo '<li><a href="' . esc_url(home_url('/')) . '">' . esc_html__('Service 1', 'kaddora') . '</a></li>';
+                            echo '<li><a href="' . esc_url(admin_url('nav-menus.php')) . '">' . esc_html__('Add Services', 'kaddora') . '</a></li>';
+                        }
+                        ?>
                     </ul>
                 </div>
             </div>
@@ -82,8 +81,8 @@
                 <div class="footer-menu">
                     <h5 class="widget-title">Subscribe Us</h5>
                     <p>Subscribe to our newsletter to get updates about our grand offers.</p>
-                    <form class="d-flex mt-3 gap-0" action="#">
-                        <input class="form-control rounded-start rounded-0 bg-light" type="email" placeholder="Email Address" aria-label="Email Address">
+                    <form class="d-flex mt-3 gap-0" action="#" method="post">
+                        <input class="form-control rounded-start rounded-0 bg-light" type="email" placeholder="Email Address" aria-label="Email Address" name="email" required>
                         <button class="btn btn-dark rounded-end rounded-0" type="submit">Subscribe</button>
                     </form>
                 </div>
@@ -93,14 +92,14 @@
     </div>
 </footer>
 
-<div id="footer-bottom" style="background-color: #f4f4f4; color: black;">
+<div id="footer-bottom" style="background-color: #f4f4f4; color: black; border-top: 1px solid #ddd;">
     <div class="container-lg">
-        <div class="row">
+        <div class="row align-items-center">
             <div class="col-md-6 copyright">
-                <p>© <?php echo date('Y'); ?> Organic. All rights reserved.</p>
+                <p class="mb-0">© <?php echo date('Y'); ?> Organic. All rights reserved.</p>
             </div>
             <div class="col-md-6 credit-link text-start text-md-end">
-                <p>Designed & Developed by <a style="text-decoration: none;" href="https://kaddora.com/"><strong> Kaddora Tech</strong></a> | Distributed By <a style="text-decoration: none;" href="https://kaddora.com"><strong>ThemeKaddora</strong></a></p>
+                <p class="mb-0">Designed & Developed by <a style="text-decoration: none;" href="https://kaddora.com/"><strong>Kaddora Tech</strong></a> | Distributed By <a style="text-decoration: none;" href="https://kaddora.com"><strong>ThemeKaddora</strong></a></p>
             </div>
         </div>
     </div>

@@ -14,22 +14,4 @@
 	<?php endif; ?>
 </section>
 
-
-<main id="primary" class="site-main">
-	<?php
-	while (have_posts()):
-		the_post();
-		if (has_post_thumbnail()): ?>
-			<div class="post-thumbnail">
-				<?php the_post_thumbnail('professorLandscape'); ?>
-				<?php the_post_thumbnail('professorPortrait'); ?>
-			</div>
-		<?php endif;
-
-	endwhile; // End of the loop.
-	?>
-
-</main><!-- #main -->
-
-<?php
-get_footer();
+<?php get_footer(); ?>
